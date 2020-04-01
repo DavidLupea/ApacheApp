@@ -8,7 +8,11 @@ from flask import flash
 import time
 import sqlite3  # enable control of an sqlite database
 import sqldb
+import os
 
+DIR = os.path.dirname(__file__) or '.'
+DIR += '/'
+DB_FILE = DIR + "glit.db"
 
 app = Flask(__name__)
 app.secret_key = 'hfjkafhrku'
@@ -231,7 +235,6 @@ def viewBlog():
 
 
 def runsqlcommand(command):
-    DB_FILE = "glit.db"
     db = sqlite3.connect(DB_FILE)  # open if file exists, otherwise create
     c = db.cursor()  # facilitate db ops
     c.execute(command)

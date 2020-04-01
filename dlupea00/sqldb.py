@@ -1,8 +1,12 @@
 import sqlite3   #enable control of an sqlite database
 import csv       #facilitate CSV I/O
+import os
 
-DB_FILE= "glit.db"
-db = sqlite3.connect("glit.db") #open if file exists, otherwise create
+DIR = os.path.dirname(__file__) or '.'
+DIR += '/'
+DB_FILE = DIR + "glit.db"
+
+db = sqlite3.connect(DB_FILE)#open if file exists, otherwise create
 c = db.cursor()               #facilitate db ops
 
 #==============================================================================
